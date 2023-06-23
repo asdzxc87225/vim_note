@@ -1,5 +1,7 @@
 let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-1 siso=-1
 argglobal
+nnoremap <buffer> <silent> D :PlugDiff
+nnoremap <buffer> <silent> S :PlugStatus
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -8,16 +10,16 @@ setlocal balloonexpr=
 setlocal nobinary
 setlocal nobreakindent
 setlocal breakindentopt=
-setlocal bufhidden=
-setlocal buflisted
-setlocal buftype=
+setlocal bufhidden=wipe
+setlocal nobuflisted
+setlocal buftype=nofile
 setlocal nocindent
 setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
 setlocal cinoptions=
 setlocal cinwords=if,else,while,do,for,switch
 setlocal colorcolumn=
-setlocal comments=fb:-,fb:*,n:>
-setlocal commentstring=
+setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+setlocal commentstring=/*%s*/
 setlocal complete=.,w,b,u,t,i
 setlocal concealcursor=
 setlocal conceallevel=0
@@ -34,8 +36,8 @@ setlocal nodiff
 setlocal equalprg=
 setlocal errorformat=
 setlocal expandtab
-if &filetype != 'text'
-setlocal filetype=text
+if &filetype != 'vim-plug'
+setlocal filetype=vim-plug
 endif
 setlocal fixendofline
 setlocal foldcolumn=0
@@ -71,7 +73,7 @@ setlocal makeencoding=
 setlocal makeprg=
 setlocal matchpairs=(:),{:},[:]
 setlocal nomodeline
-setlocal modifiable
+setlocal nomodifiable
 setlocal nrformats=bin,octal,hex
 setlocal number
 setlocal numberwidth=4
@@ -102,8 +104,8 @@ setlocal statusline=%!airline#statusline(1)
 setlocal suffixesadd=
 setlocal noswapfile
 setlocal synmaxcol=3000
-if &syntax != 'text'
-setlocal syntax=text
+if &syntax != 'vim-plug'
+setlocal syntax=vim-plug
 endif
 setlocal tabstop=8
 setlocal tagcase=
@@ -123,16 +125,14 @@ setlocal virtualedit=
 setlocal wincolor=
 setlocal nowinfixheight
 setlocal nowinfixwidth
-setlocal wrap
+setlocal nowrap
 setlocal wrapmargin=0
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 154 - ((0 * winheight(0) + 13) / 27)
+let s:l = 6 - ((5 * winheight(0) + 14) / 29)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 154
-normal! 070|
+keepjumps 6
+normal! 0
 let &g:so = s:so_save | let &g:siso = s:siso_save
 nohlsearch
 doautoall SessionLoadPost
