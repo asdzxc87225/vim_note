@@ -14,21 +14,24 @@ let g:instant_markdown_mathjax = 1
 
 
 "縮排
-augroup remember_folds
-autocmd!
-autocmd BufWinLeave * mkview
-autocmd BufWinEnter * silent! loadview
-augroup END
+"augroup remember_folds
+"autocmd!
+"autocmd BufWinLeave * mkview
+"autocmd BufWinEnter * silent! loadview
+"augroup END
 "Nertree
 nnoremap <F5> :exec 'NERDTreeToggle' <CR>
 
 set ai 
 set t_Co=256
-set cursorcolumn
 set number
 set clipboard=unnamed
 set cursorline
+
+set cursorcolumn
 set noswapfile
+hi CursorColumn cterm=none ctermbg=90
+hi cursorline cterm=none ctermbg=90
 
 " search
 set hlsearch
@@ -52,11 +55,13 @@ set background=dark
 filetype on
 filetype indent on
 filetype plugin on
-colorscheme gruvbox
+"colorscheme gruvbox
 
 call plug#begin()
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'https://github.com/morhetz/gruvbox'
 Plug 'https://github.com/vim-airline/vim-airline'
 Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
+Plug 'deoplete-plugins/deoplete-jedi', { 'for': 'python' }
+Plug 'davidhalter/jedi-vim'
 call plug#end()

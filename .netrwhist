@@ -1,5 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =5
+let g:netrw_dirhistcnt =7
+let g:netrw_dirhist_7='/home/luu/doc/112_1/pythn_up/10-4'
+let g:netrw_dirhist_6='/home/luu/doc/project/doc/getting_started'
 let g:netrw_dirhist_5='/home/luu/Documents'
 let g:netrw_dirhist_4='/home/luu'
 let g:netrw_dirhist_3='/home/luu/Documents/on_class/ai運用/6-6'
